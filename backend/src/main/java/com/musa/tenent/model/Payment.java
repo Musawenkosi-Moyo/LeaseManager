@@ -1,17 +1,18 @@
 package com.musa.tenent.model;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
-import com.musa.tenent.domain.PROPERTY_TYPE;
+import com.musa.tenent.domain.PaymentMethod;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,33 +21,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "properties")
+@Table(name = "payments")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Property {
-
-    // This involves the house it self
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private LocalDate paymentDate;
 
-    private String address;
+    private BigDecimal amount;
 
-    private String description;
+    @Enumerated(EnumType.STRING)
+    private PaymentMethod method;
 
-    private PROPERTY_TYPE type;
+    private String reference;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
-
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
-    private List<Unit> units;
+    @JoinColumn(name = "lease_id")
+    private Lease lease;
 
 }
