@@ -1,6 +1,6 @@
 package com.musa.tenent.domain;
 
-public enum PROPERTY_TYPE {
+public enum PropertyType {
 
     HOUSE,
     APARTMENT,
