@@ -1,7 +1,7 @@
 
 package com.musa.tenent.model;
 
-import com.musa.tenent.domain.USER_ROLE;
+import com.musa.tenent.domain.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,6 +38,6 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private USER_ROLE role;
+    private UserRole role;
 
 }

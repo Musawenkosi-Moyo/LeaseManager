@@ -2,7 +2,7 @@ package com.musa.tenent.model;
 
 import java.util.List;
 
-import com.musa.tenent.domain.PROPERTY_TYPE;
+import com.musa.tenent.domain.PropertyType;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -40,7 +40,7 @@ public class Property {
 
     private String description;
 
-    private PROPERTY_TYPE type;
+    private PropertyType type;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
